@@ -47,7 +47,11 @@ class NeuralNetwork:
     def sigmoid_derivative(self, x):
         return x * (1 - x)
     
+    def mse_loss(self, y_true, y_pred):
+        return ((y_true - y_pred) ** 2).mean()
 
+    def mse_loss_derivative(self, y_true, y_pred):
+        return 2 * (y_pred - y_true) / y_true.size
     """
     This method performs the feedforward computation of the neural network. Given input data (inputs),
     it computes the output by propagating the data through the network's layers using matrix multiplications and applying activation functions (sigmoid in this case) to the neurons' outputs.
